@@ -1,0 +1,267 @@
+﻿<phone:PhoneApplicationPage x:Class="VChat.Views.MainView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:mpc="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                            xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+                            xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Input;assembly=Microsoft.Expression.Interactions"
+                            xmlns:eim="clr-namespace:Microsoft.Expression.Interactivity.Media;assembly=Microsoft.Expression.Interactions"
+                            xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            xmlns:Controls="clr-namespace:VChat.Controls"
+                            xmlns:Interactivity="clr-namespace:VChat.Interactivity"
+                            xmlns:BindableApplicationBar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+                            xmlns:Converters="clr-namespace:VChat.Converters" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+                            SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            toolkit:TiltEffect.IsTiltEnabled="True">
+
+   
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsIndeterminate="True"
+                                 IsVisible="{Binding Path=ActiveItem.IsBusy, FallbackValue=False}"
+                                 Text="{Binding Path=ActiveItem.Status}" />
+    </shell:SystemTray.ProgressIndicator>
+    
+    <phone:PhoneApplicationPage.Resources>
+
+        <Storyboard x:Key="SearchOnStoryboard">
+            <DoubleAnimation Storyboard.TargetName="SearchBox"
+                             Storyboard.TargetProperty="(RenderTransform).Y"
+                             Duration="00:00:00.3" To="0" />
+            
+            <DoubleAnimation Storyboard.TargetName="SearchBox"
+                             Storyboard.TargetProperty="Opacity"
+                             Duration="00:00:00.3" To="1" />
+            
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitlePanel"
+                                           Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Collapsed</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            
+        </Storyboard>
+
+        <Storyboard x:Key="SearchOffStoryboard">
+            
+            <DoubleAnimation Storyboard.TargetName="SearchBox"
+                             Storyboard.TargetProperty="(RenderTransform).Y"
+                             Duration="00:00:00.3" To="-100" />
+            
+            <DoubleAnimation Storyboard.TargetName="SearchBox"
+                             Storyboard.TargetProperty="Opacity"
+                             Duration="00:00:00.3" To="0" />
+            
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TitlePanel"
+                                           Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.3">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            
+        </Storyboard>
+
+        <Converters:BooleanToValueConverter x:Key="BusyToUpdateIconConverter"
+                                            TrueValue="/Resources/Icons/Dark/appbar.close.png"
+                                            FalseValue="/Resources/Icons/Dark/appbar.refresh.png" />
+        
+        <Converters:BooleanToValueConverter x:Key="BusyToUpdateTextConverter"
+                                            TrueValue="stop"
+                                            FalseValue="refresh" />
+        
+        <Converters:BooleanToValueConverter x:Key="BooleanToOnlineIconConverter"
+                                            TrueValue="/Resources/Icons/Dark/appbar.people.png"
+                                            FalseValue="/Resources/Icons/Dark/appbar.people.status.png" />
+
+        <Converters:BooleanToValueConverter x:Key="BooleanToOnlineTextConverter"
+                                            TrueValue="all"
+                                            FalseValue="online" />
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeIn" />
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut" />
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut" />
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <mpc:Pivot Grid.Row="1"
+               ItemsSource="{Binding Items}"
+               SelectedItem="{Binding ActiveItem, Mode=TwoWay}">
+
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="SelectionChanged">
+                <ec:CallMethodAction TargetObject="{Binding}" MethodName="CancelSearch" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        
+        <i:Interaction.Behaviors>
+            <Interactivity:ApplicationBarBehavior>
+                <BindableApplicationBar:BindableApplicationBar>
+                    <BindableApplicationBar:BindableApplicationBarButton Text="add"
+                                                                         IconUri="/Resources/Icons/Dark/appbar.add.png"
+                                                                         Command="{Binding Path=Messages.AddCommand}" />
+
+                    <BindableApplicationBar:BindableApplicationBarButton Text="{Binding Path=Messages.IsBusy, Converter={StaticResource BusyToUpdateTextConverter}, FallbackValue=refresh}"
+                                                                         IconUri="{Binding Path=Messages.IsBusy, Converter={StaticResource BusyToUpdateIconConverter}, FallbackValue=/Resources/Icons/Dark/appbar.refresh.png}"
+                                                                         Command="{Binding Path=Messages.UpdateCommand}" />
+
+                    <BindableApplicationBar:BindableApplicationBarButton Text="search"
+                                                                         IconUri="/Resources/Icons/Dark/appbar.magnify.png"
+                                                                         Command="{Binding SearchCommand}" />
+                    <BindableApplicationBar:BindableApplicationBar.MenuItems>
+                        <BindableApplicationBar:BindableApplicationBarMenuItem Text="settings" Command="{Binding SettingsCommand}" />
+                        <BindableApplicationBar:BindableApplicationBarMenuItem Text="sign out" Command="{Binding SignoutCommand}" />
+                    </BindableApplicationBar:BindableApplicationBar.MenuItems>
+                </BindableApplicationBar:BindableApplicationBar>
+
+                <BindableApplicationBar:BindableApplicationBar>
+                    <BindableApplicationBar:BindableApplicationBarButton Text="{Binding Path=Friends.IsOnline, Converter={StaticResource BooleanToOnlineTextConverter}, FallbackValue=online}"
+                                                                         IconUri="{Binding Path=Friends.IsOnline, Converter={StaticResource BooleanToOnlineIconConverter}, FallbackValue=/Resources/Icons/Dark/appbar.people.status.png}"
+                                                                         Command="{Binding Path=Friends.OnlineStatusCommand}" />
+                    
+                    <BindableApplicationBar:BindableApplicationBarButton Text="search"
+                                                                         IconUri="/Resources/Icons/Dark/appbar.magnify.png"
+                                                                         Command="{Binding SearchCommand}" />
+                    <BindableApplicationBar:BindableApplicationBar.MenuItems>
+                        <BindableApplicationBar:BindableApplicationBarMenuItem Text="settings" Command="{Binding SettingsCommand}" />
+                        <BindableApplicationBar:BindableApplicationBarMenuItem Text="sign out" Command="{Binding SignoutCommand}" />
+                    </BindableApplicationBar:BindableApplicationBar.MenuItems>
+                </BindableApplicationBar:BindableApplicationBar>
+            </Interactivity:ApplicationBarBehavior>
+        </i:Interaction.Behaviors>
+        
+        <mpc:Pivot.Title>
+            <Grid Margin="0,0,12,0">
+
+                <Grid x:Name="TitlePanel">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" Visibility="{StaticResource PhoneDarkThemeVisibility}" Source="/Resources/Icons/Dark/logo.png" />
+                    <Image Grid.Column="0" Visibility="{StaticResource PhoneLightThemeVisibility}" Source="/Resources/Icons/Light/logo.png" />
+
+                    <Controls:StatusIcon Grid.Column="2" Margin="12,0,0,0" ShowWhenEmpty="True" Text="{Binding NewMessages}" >
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Tap">
+                                <ec:CallMethodAction TargetObject="{Binding}" MethodName="OpenDialogs" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        
+                        <Grid>
+                            <Image Margin="-6,0" Visibility="{StaticResource PhoneDarkThemeVisibility}" Source="/Resources/Icons/Dark/appbar.message.png" />
+                            <Image Margin="-6,0" Visibility="{StaticResource PhoneLightThemeVisibility}" Source="/Resources/Icons/Light/appbar.message.png" />
+                        </Grid>
+                        
+                    </Controls:StatusIcon>
+
+                    <Controls:StatusIcon Grid.Column="3" Margin="12,0,0,0" ShowWhenEmpty="True" Text="{Binding NewFriends}">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Tap">
+                                <ec:CallMethodAction TargetObject="{Binding}" MethodName="OpenFriends" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <Grid>
+                            <Image Margin="-6,0" Visibility="{StaticResource PhoneDarkThemeVisibility}" Source="/Resources/Icons/Dark/appbar.user.png" />
+                            <Image Margin="-6,0" Visibility="{StaticResource PhoneLightThemeVisibility}" Source="/Resources/Icons/Light/appbar.user.png" />
+                        </Grid>
+                        
+                    </Controls:StatusIcon>
+
+                </Grid>
+
+                <toolkit:PhoneTextBox x:Name="SearchBox"
+                                      Margin="-12" Opacity="0"
+                                      ActionIcon="/Resources/Icons/Light/appbar.close.png">
+
+                    <i:Interaction.Behaviors>
+                        <Interactivity:TextDelayBehavior Text="{Binding Path=ActiveItem.SearchPhrase, Mode=TwoWay}" />
+                    </i:Interaction.Behaviors>
+
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="GotFocus">
+                            <ec:ChangePropertyAction TargetObject="{Binding}" PropertyName="IsSearchActive" Value="True" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostFocus">
+                            <ec:ChangePropertyAction TargetObject="{Binding}" PropertyName="IsSearchActive" Value="False" />
+                        </i:EventTrigger>
+
+                        <Interactivity:EnterKeyTrigger>
+                            <Interactivity:SetFocusAction Negatiate="True" />
+                        </Interactivity:EnterKeyTrigger>
+                        
+                        <i:EventTrigger EventName="ActionIconTapped">
+                            <ec:CallMethodAction TargetObject="{Binding}" MethodName="CancelSearch" />
+                        </i:EventTrigger>
+
+                        <ec:DataTrigger Binding="{Binding IsSearching}" Comparison="Equal" Value="True">
+                            <eim:ControlStoryboardAction Storyboard="{StaticResource SearchOnStoryboard}" />
+                            <Interactivity:SetFocusAction />
+                        </ec:DataTrigger>
+                        <ec:DataTrigger Binding="{Binding IsSearching}" Comparison="Equal" Value="False">
+                            <eim:ControlStoryboardAction Storyboard="{StaticResource SearchOffStoryboard}" />
+                            <Interactivity:SetFocusAction Negatiate="True" />
+                        </ec:DataTrigger>
+
+                    </i:Interaction.Triggers>
+
+                    <toolkit:PhoneTextBox.RenderTransform>
+                        <TranslateTransform Y="-100" />
+                    </toolkit:PhoneTextBox.RenderTransform>
+
+                </toolkit:PhoneTextBox>
+                
+            </Grid>
+        </mpc:Pivot.Title>
+
+        <mpc:Pivot.HeaderTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding DisplayName}" />
+            </DataTemplate>
+        </mpc:Pivot.HeaderTemplate>
+
+        <mpc:Pivot.ItemTemplate>
+            <DataTemplate>
+                <ContentControl cal:View.Model="{Binding}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch" />
+            </DataTemplate>
+        </mpc:Pivot.ItemTemplate>
+
+    </mpc:Pivot>
+
+</phone:PhoneApplicationPage>

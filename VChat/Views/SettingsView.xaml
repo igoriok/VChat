@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage x:Class="VChat.Views.SettingsView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="PortraitOrLandscape"
+                            mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+                            shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeIn" />
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut" />
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut" />
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <StackPanel>
+        
+        <TextBlock Margin="6" FontSize="{StaticResource PhoneFontSizeExtraLarge}" Text="Настройки" />
+
+        <TextBlock />
+       
+        <toolkit:ToggleSwitch Header="Vibrate" IsChecked="{Binding IsVibrateEnabled, Mode=TwoWay}" />
+
+        <toolkit:ToggleSwitch Header="Sound" IsChecked="{Binding IsSoundEnabled, Mode=TwoWay}" />
+        
+        <toolkit:ToggleSwitch Header="Push notifications" IsChecked="{Binding IsPushEnabled, Mode=TwoWay}" />
+        
+    </StackPanel>
+
+</phone:PhoneApplicationPage>

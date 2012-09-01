@@ -1,0 +1,67 @@
+﻿<phone:PhoneApplicationPage x:Class="VChat.Views.ConfirmView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            xmlns:cal="http://www.caliburnproject.org"
+                            SupportedOrientations="PortraitOrLandscape"
+                            mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
+                            shell:SystemTray.IsVisible="True"
+                            cal:View.ApplyConventions="True">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="{Binding IsBusy}" Text="{Binding Status}" />
+    </shell:SystemTray.ProgressIndicator>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeIn" />
+            </toolkit:NavigationInTransition.Backward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut" />
+            </toolkit:NavigationOutTransition.Forward>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut" />
+            </toolkit:NavigationOutTransition.Backward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="12" TextWrapping="Wrap" Text="{Binding Source={StaticResource Labels}, Path=ConfirmationSend}" />
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Margin="12,12,12,0" Text="{Binding Source={StaticResource Labels}, Path=Code}" />
+            <TextBox x:Name="Code" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Margin="12,12,12,0" Text="{Binding Source={StaticResource Labels}, Path=Password}" />
+            <PasswordBox x:Name="Password" />
+        </StackPanel>
+
+        <Button x:Name="Confirm" Grid.Row="3" Margin="0,24,0,0" Content="{Binding Source={StaticResource Labels}, Path=Confirm}" />
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

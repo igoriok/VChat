@@ -1,0 +1,71 @@
+﻿<phone:PhoneApplicationPage x:Class="VChat.Views.FriendRequestsView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                            xmlns:Interactivity="clr-namespace:VChat.Interactivity"
+                            SupportedOrientations="PortraitOrLandscape"
+                            mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+                            shell:SystemTray.IsVisible="True"
+                            toolkit:TiltEffect.IsTiltEnabled="True">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="{Binding IsBusy}" Text="{Binding Status}" />
+    </shell:SystemTray.ProgressIndicator>
+
+    <phone:PhoneApplicationPage.Resources>
+
+        <DataTemplate x:Key="UserTemplate">
+            <Grid Margin="12,6">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Height="50" Width="50" Source="{Binding Photo}" />
+
+                <TextBlock Grid.Column="1" Margin="12,0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" >
+                        <Run Text="{Binding FirstName, Mode=OneWay}" />
+                        <Run Text="{Binding LastName, Mode=OneWay}" />
+                </TextBlock>
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GroupHeaderTemplate">
+            <TextBlock Margin="12,6" Text="{Binding Key}" FontSize="{StaticResource PhoneFontSizeSmall}" Foreground="{StaticResource PhoneSubtleBrush}" />
+        </DataTemplate>
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="12,6" FontSize="{StaticResource PhoneFontSizeLarge}">
+            <Run Text="FRIEND REQUESTS" />
+            <Run Text="{Binding Count, StringFormat=(\{0\})}" />
+        </TextBlock>
+
+        <toolkit:LongListSelector Grid.Row="1"
+                                  ItemsSource="{Binding Users}"
+                                  ItemTemplate="{StaticResource UserTemplate}"
+                                  GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}">
+
+            <i:Interaction.Behaviors>
+                <Interactivity:LongListSelectionBehavior SelectedItem="{Binding Selected, Mode=TwoWay}" />
+            </i:Interaction.Behaviors>
+            
+        </toolkit:LongListSelector>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
