@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VChat", "VChat\VChat.csproj", "{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkAudioPlaybackAgent", "VkAudioPlaybackAgent\VkAudioPlaybackAgent.csproj", "{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

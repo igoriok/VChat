@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F484EBC0-8DFF-46D1-8976-0CF2F2D0CDBD}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VChat</RootNamespace>
+    <AssemblyName>VChat</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>ru</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>VChat.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>VChat.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BindableApplicationBar">
+      <HintPath>..\packages\BindableApplicationBar.1.0.0\lib\sl4-windowsphone71\BindableApplicationBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.1.3.1\lib\sl4-windowsphone71\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Extensions, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.1.3.1\lib\sl4-windowsphone71\Caliburn.Micro.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock.WindowsPhone.Mango">
+      <HintPath>..\packages\Hammock.1.3.0\lib\sl4-wp71\Hammock.WindowsPhone.Mango.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib.WindowsPhone">
+      <HintPath>..\packages\Hammock.1.3.0\lib\sl4-wp71\ICSharpCode.SharpZipLib.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2012.6.25\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Phone.Reactive" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.GamerServices" />
+    <Reference Include="mscorlib.extensions" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\sl4-windowsphone71\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpZipLib.WindowsPhone7">
+      <HintPath>..\packages\SharpZipLib-WP7.0.86.0.518\lib\sl4-windowsphone71\SharpZipLib.WindowsPhone7.dll</HintPath>
+    </Reference>
+    <Reference Include="system.data.linq" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Observable" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.1.3.1\lib\sl4-windowsphone71\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="NotifyPropertyWeaver">
+      <HintPath>$(SolutionDir)Tools\NotifyPropertyWeaver.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WindowsPhone">
+      <HintPath>..\packages\SterlingPhone.1.5.0.1\lib\SL3-WP\Wintellect.Sterling.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WindowsPhone.IsolatedStorage">
+      <HintPath>..\packages\SterlingPhone.1.5.0.1\lib\SL3-WP\Wintellect.Sterling.WindowsPhone.IsolatedStorage.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Controls\DataTemplateSelector.cs" />
+    <Compile Include="Controls\StatusIcon.cs" />
+    <Compile Include="Converters\AttachmentToDataTemplateConverter.cs" />
+    <Compile Include="Converters\BooleanToImageSourceConverter.cs" />
+    <Compile Include="Converters\BooleanToValueConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\DivideConverter.cs" />
+    <Compile Include="Converters\GeoToImageConverter.cs" />
+    <Compile Include="Converters\StreamToSourceConverter.cs" />
+    <Compile Include="Converters\InvertBooleanConverter.cs" />
+    <Compile Include="Converters\InvertBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\RelativeColorConverter.cs" />
+    <Compile Include="Events\Authenticate\SignIn.cs" />
+    <Compile Include="Events\Authenticate\SignOut.cs" />
+    <Compile Include="Events\Authenticate\SignUp.cs" />
+    <Compile Include="Events\Data\ChatMessageChanged.cs" />
+    <Compile Include="Events\Data\DialogMessageChanged.cs" />
+    <Compile Include="Events\Lifetime\AppActivate.cs" />
+    <Compile Include="Events\Lifetime\AppClose.cs" />
+    <Compile Include="Events\Lifetime\AppDeactivate.cs" />
+    <Compile Include="Events\Lifetime\AppLaunch.cs" />
+    <Compile Include="Events\Update\ChatChanged.cs" />
+    <Compile Include="Events\Update\MessageAdded.cs" />
+    <Compile Include="Events\Update\MessageDeleted.cs" />
+    <Compile Include="Events\Update\MessageFlag.cs" />
+    <Compile Include="Events\Update\MessageFlagAdded.cs" />
+    <Compile Include="Events\Update\MessageFlagChanged.cs" />
+    <Compile Include="Events\Update\MessageFlagRemoved.cs" />
+    <Compile Include="Events\Update\Update.cs" />
+    <Compile Include="Events\Update\UserCalled.cs" />
+    <Compile Include="Events\Update\UserOffline.cs" />
+    <Compile Include="Events\Update\UserOnline.cs" />
+    <Compile Include="Events\Update\UserTyping.cs" />
+    <Compile Include="Events\Update\UserTypingInChat.cs" />
+    <Compile Include="Interactivity\ApplicationBarBehavior.cs" />
+    <Compile Include="Interactivity\EnterKeyTrigger.cs" />
+    <Compile Include="Interactivity\LoadMoreBehavior.cs" />
+    <Compile Include="Interactivity\LongListSelectionBehavior.cs" />
+    <Compile Include="Interactivity\MirrorBehavior.cs" />
+    <Compile Include="Interactivity\SetFocusAction.cs" />
+    <Compile Include="Interactivity\TextDelayBehavior.cs" />
+    <Compile Include="Interactivity\TextWithHyperlinkBehavior.cs" />
+    <Compile Include="Interactivity\UpdateTextBindingAction.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\Owner.cs" />
+    <Compile Include="Models\VideoFiles.cs" />
+    <Compile Include="Models\WallAudioAttachment.cs" />
+    <Compile Include="Models\WallDocumentAttachment.cs" />
+    <Compile Include="Models\WallPhotoAttachment.cs" />
+    <Compile Include="Models\WallVideoAttachment.cs" />
+    <Compile Include="Models\WallWallAttachment.cs" />
+    <Compile Include="Models\MessageAttachment.cs" />
+    <Compile Include="Models\Audio.cs" />
+    <Compile Include="Models\Association.cs" />
+    <Compile Include="Models\MessageAudioAttachment.cs" />
+    <Compile Include="Models\Chat.cs" />
+    <Compile Include="Models\ForwardMessage.cs" />
+    <Compile Include="Models\Sex.cs" />
+    <Compile Include="Models\WallAttachment.cs" />
+    <Compile Include="Mvvm\Group.cs" />
+    <Compile Include="Mvvm\IBusyState.cs" />
+    <Compile Include="Services\AudioPlayer\AudioPlayer.cs" />
+    <Compile Include="Services\AudioPlayer\IAudioPlayer.cs" />
+    <Compile Include="Services\Cache\DataCache.cs" />
+    <Compile Include="Models\ChatUser.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\MessageDocumentAttachment.cs" />
+    <Compile Include="Models\Geo.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\MessagePhotoAttachment.cs" />
+    <Compile Include="Services\Cache\PhotoCache.cs" />
+    <Compile Include="Services\Cache\UserCache.cs" />
+    <Compile Include="Services\Maps\GoogleMapService.cs" />
+    <Compile Include="Services\Maps\IMapService.cs" />
+    <Compile Include="Services\System\SoundService.cs" />
+    <Compile Include="Services\System\VibrateService.cs" />
+    <Compile Include="Services\Videos\IVideoProvider.cs" />
+    <Compile Include="Services\Videos\VideoProvider.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkActivity.cs" />
+    <Compile Include="Services\Vkontakte\Data\PostSource.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Video.cs" />
+    <Compile Include="Models\MessageVideoAttachment.cs" />
+    <Compile Include="Models\Wall.cs" />
+    <Compile Include="Models\MessageWallAttachment.cs" />
+    <Compile Include="Mvvm\DelegateCommand[T].cs" />
+    <Compile Include="Mvvm\DelegateCommand.cs" />
+    <Compile Include="Mvvm\Extensions.cs" />
+    <Compile Include="Mvvm\Logging\DebugLog.cs" />
+    <Compile Include="Mvvm\MessageBox.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Cache\IDataCache.cs" />
+    <Compile Include="Services\Cache\IPhotoCache.cs" />
+    <Compile Include="Services\Configuration\ApplicationConfiguration.cs" />
+    <Compile Include="Services\Configuration\IConfiguration.cs" />
+    <Compile Include="Services\Contacts\IPhoneBook.cs" />
+    <Compile Include="Services\Contacts\PhoneBook.cs" />
+    <Compile Include="Services\Data\DataService.cs" />
+    <Compile Include="Services\Data\IDataService.cs" />
+    <Compile Include="Services\System\ApplicationService.cs" />
+    <Compile Include="Services\System\BaseUserService.cs" />
+    <Compile Include="Services\System\IUserService.cs" />
+    <Compile Include="Services\System\PushService.cs" />
+    <Compile Include="Services\System\SystemService.cs" />
+    <Compile Include="Services\System\UserOnlineService.cs" />
+    <Compile Include="Services\System\UserService.cs" />
+    <Compile Include="Services\System\ISystemService.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkChat.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkAttachment.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkAudio.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkDocument.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkGeo.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkGeoType.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkLastSeen.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkLikes.cs" />
+    <Compile Include="Services\Vkontakte\Data\LongPollHistory.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkLongPollData.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkLongPollServer.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkMessage.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkPhoto.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkPlace.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkPostSource.cs" />
+    <Compile Include="Services\Vkontakte\Data\PostSourceType.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkReposts.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkUploadedPhoto.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkVideo.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkWall.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkComments.cs" />
+    <Compile Include="Services\System\LongPollService.cs" />
+    <Compile Include="Services\Token\ITokenProvider.cs" />
+    <Compile Include="Services\MD5\MD5.cs" />
+    <Compile Include="Models\OAuthToken.cs" />
+    <Compile Include="Services\Net\INetworkInterface.cs" />
+    <Compile Include="Services\Net\NetworkInterface.cs" />
+    <Compile Include="Services\Cache\IUserCache.cs" />
+    <Compile Include="Services\Vkontakte\Requests\ContentRequest.cs" />
+    <Compile Include="Services\Vkontakte\Requests\LongPollServerRequest.cs" />
+    <Compile Include="Services\Vkontakte\Requests\ObservableJsonRequest.cs" />
+    <Compile Include="Services\Vkontakte\Data\VkUserRights.cs" />
+    <Compile Include="Services\Vkontakte\Requests\ObservableWebRequest.cs" />
+    <Compile Include="Services\Vkontakte\Requests\GenericRequest.cs" />
+    <Compile Include="Services\Vkontakte\Requests\VkApiRequest.cs" />
+    <Compile Include="Services\Vkontakte\Parser.cs" />
+    <Compile Include="Services\Token\TokenProvider.cs" />
+    <Compile Include="Services\Vkontakte\VkCaptchaException.cs" />
+    <Compile Include="Services\Vkontakte\VkException.cs" />
+    <Compile Include="Services\Vkontakte\VkClient.cs" />
+    <Compile Include="Storages\MainViewModelStorage.cs" />
+    <Compile Include="ViewModels\ChatInfoViewModel.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\ContactInfoViewModel.cs" />
+    <Compile Include="ViewModels\ContactsViewModel.cs" />
+    <Compile Include="ViewModels\ConversationBaseViewModel.cs" />
+    <Compile Include="ViewModels\Data\AttachmentViewModel.cs" />
+    <Compile Include="ViewModels\Data\AudioViewModel.cs" />
+    <Compile Include="ViewModels\Data\DocumentViewModel.cs" />
+    <Compile Include="ViewModels\Data\ForwardMessageViewModel.cs" />
+    <Compile Include="ViewModels\Data\GeoViewModel.cs" />
+    <Compile Include="ViewModels\Data\Image.cs" />
+    <Compile Include="ViewModels\Data\OwnerViewModel.cs" />
+    <Compile Include="ViewModels\Data\PhotoViewModel.cs" />
+    <Compile Include="ViewModels\Data\VideoViewModel.cs" />
+    <Compile Include="ViewModels\Data\WallViewModel.cs" />
+    <Compile Include="ViewModels\DialogViewModel.cs" />
+    <Compile Include="ViewModels\Data\ConversationViewModel.cs" />
+    <Compile Include="ViewModels\Data\MessageViewModel.cs" />
+    <Compile Include="ViewModels\Data\UserViewModel.cs" />
+    <Compile Include="ViewModels\ExceptionHelper.cs" />
+    <Compile Include="ViewModels\Extensions.cs" />
+    <Compile Include="Mvvm\FilteredCollection.cs" />
+    <Compile Include="ViewModels\FriendsViewModel.cs" />
+    <Compile Include="ViewModels\MainTabItem.cs" />
+    <Compile Include="ViewModels\IndicatorViewModel.cs" />
+    <Compile Include="ViewModels\Labels.cs" />
+    <Compile Include="MainFrame.xaml.cs">
+      <DependentUpon>MainFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Vkontakte\IVkClient.cs" />
+    <Compile Include="Services\Vkontakte\Data\ResultCode.cs" />
+    <Compile Include="ViewModels\ConfirmViewModel.cs" />
+    <Compile Include="ViewModels\MessageInfoViewModel.cs" />
+    <Compile Include="ViewModels\FriendRequestsViewModel.cs" />
+    <Compile Include="ViewModels\SigninViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MessagesViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SignupViewModel.cs" />
+    <Compile Include="ViewModels\StartupViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelExtensions.cs" />
+    <Compile Include="Views\ChatView.xaml.cs">
+      <DependentUpon>ChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConfirmView.xaml.cs">
+      <DependentUpon>ConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactInfoView.xaml.cs">
+      <DependentUpon>ContactInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactsView.xaml.cs">
+      <DependentUpon>ContactsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogView.xaml.cs">
+      <DependentUpon>DialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendRequestsView.xaml.cs">
+      <DependentUpon>FriendRequestsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendsView.xaml.cs">
+      <DependentUpon>FriendsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SigninView.xaml.cs">
+      <DependentUpon>SigninView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\MessagesView.xaml.cs">
+      <DependentUpon>MessagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignupView.xaml.cs">
+      <DependentUpon>SignupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartupView.xaml.cs">
+      <DependentUpon>StartupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserInfoView.xaml.cs">
+      <DependentUpon>UserInfoView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ConversationTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConfirmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContactInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContactsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendRequestsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SigninView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.base.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.camera.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.control.pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.control.play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.list.check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.location.round.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.magnify.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.message.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.message.send.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.message.smiley.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.people.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.people.status.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.question.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.refresh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.user.add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\appbar.user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Dark\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.base.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.camera.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.control.pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.control.play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.list.check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.location.round.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.magnify.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.message.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.message.send.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.message.smiley.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.people.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.people.status.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.question.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.refresh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.user.add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\appbar.user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Light\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Sound\message.wav" />
+    <Resource Include="Resources\Sound\notification.wav" />
+    <Content Include="Resources\SplashScreenImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VkAudioPlaybackAgent\VkAudioPlaybackAgent.csproj">
+      <Project>{0EAAF1CE-456C-4EDE-B2B2-8DD031AF4961}</Project>
+      <Name>VkAudioPlaybackAgent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <Target Name="AfterCompile">
+    <NotifyPropertyWeaverMsBuildTask.WeavingTask TryToWeaveAllTypes="false" EventInvokerName="NotifyOfPropertyChange" />
+  </Target>
+  <UsingTask TaskName="NotifyPropertyWeaverMsBuildTask.WeavingTask" AssemblyFile="$(SolutionDir)Tools\NotifyPropertyWeaverMsBuildTask.dll" />
+</Project>

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="VChat.Views.ContactsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="GroupHeaderTemplate">
+            <Border Background="{StaticResource PhoneAccentBrush}" Padding="{StaticResource PhoneTouchTargetOverhang}">
+                <TextBlock Text="{Binding Key}" Style="{StaticResource PhoneTextLargeStyle}"/>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="ContactTemplate">
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Height="48" Width="48" Source="{Binding PhotoStream, Converter={StaticResource ImageToSourceConverter}}" />
+
+                <TextBlock Grid.Column="1" Margin="12,0" FontSize="{StaticResource PhoneFontSizeLarge}">
+                    <Run Text="{Binding FirstName, Mode=OneWay}" />
+                    <Run Text="{Binding LastName, Mode=OneWay}" />
+                </TextBlock>
+
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <toolkit:LongListSelector ItemsSource="{Binding Contacts}"
+                              ItemTemplate="{StaticResource ContactTemplate}"
+                              GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                              SelectedItem="{Binding ActiveContact, Mode=TwoWay}">
+
+    </toolkit:LongListSelector>
+
+
+</UserControl>

@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="VChat.Views.MessagesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Converters="clr-namespace:VChat.Converters"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             xmlns:Interactivity="clr-namespace:VChat.Interactivity"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+
+        <Converters:BooleanToValueConverter x:Key="BooleanToMessageTextBrushConverter"
+                                            TrueValue="{StaticResource PhoneForegroundBrush}"
+                                            FalseValue="{StaticResource PhoneAccentBrush}" />
+
+        <DataTemplate x:Key="ConversationTemplate">
+            <Grid>
+
+                <toolkit:ContextMenuService.ContextMenu>
+                    <toolkit:ContextMenu cal:Action.TargetWithoutContext="{Binding ElementName=ChatList, Path=DataContext}">
+                        <toolkit:MenuItem Header="delete conversation" cal:Message.Attach="Delete($dataContext)" />
+                    </toolkit:ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                       Width="48" Height="48"
+                       Source="{Binding Path=Users[0].Photo}" />
+
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                           Margin="12,0"
+                           FontSize="{StaticResource PhoneFontSizeMediumLarge}" Text="{Binding Title}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Margin="12,0"
+                           Foreground="{Binding Path=Message.IsRead, Converter={StaticResource BooleanToMessageTextBrushConverter}}"
+                           Text="{Binding Path=Message.Body}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="2"
+                           Margin="12,0"
+                           Foreground="{StaticResource PhoneSubtleBrush}"
+                           FontSize="{StaticResource PhoneFontSizeSmall}"
+                           Text="{Binding Path=Message.Timestamp, Converter={StaticResource RelativeTimeConverter}}" />
+
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid>
+
+        <ListBox x:Name="ChatList"
+                 ItemsSource="{Binding ConversationsView}"
+                 SelectedItem="{Binding ActiveConversation, Mode=TwoWay}"
+                 ItemTemplate="{StaticResource ConversationTemplate}">
+
+            <i:Interaction.Behaviors>
+                <Interactivity:LoadMoreBehavior LoadCommand="{Binding LoadCommand}" />
+            </i:Interaction.Behaviors>
+            
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Margin" Value="3" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+        </ListBox>
+
+    </Grid>
+
+</UserControl>
